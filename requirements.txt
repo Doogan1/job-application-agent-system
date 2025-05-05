@@ -1,0 +1,16 @@
+requests>=2.28.0
+python-docx>=0.8.11
+fpdf>=1.7.2
+python-dotenv>=0.20.0
+beautifulsoup4>=4.11.1
+selenium>=4.2.0
+webdriver-manager>=3.7.0
+nltk>=3.7
+tqdm>=4.64.0
+PyPDF2>=2.9.0
+openai>=0.27.0
+pytest>=7.0.0
+pytest-cov>=3.0.0
+black>=22.3.0
+isort>=5.10.1
+flake8>=4.0.1
