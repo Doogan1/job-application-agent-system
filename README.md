@@ -16,6 +16,35 @@ This project creates a system of AI agents that handle various aspects of job ap
 - Application tracking and analytics dashboard
 - Interview preparation assistance
 
+## Architecture Overview
+
+The system follows a modular architecture with independent agents that communicate through well-defined interfaces:
+
+```
+┌─────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
+│  JobFinder  │────▶│ ResumeTailor │────▶│ LetterWriter │────▶│ ApplicationSubmit│
+└─────────────┘     └──────────────┘     └──────────────┘     └──────────────────┘
+        │                   │                   │                      │
+        │                   │                   │                      │
+        ▼                   ▼                   ▼                      ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              Utility Services                                 │
+│                                                                              │
+│   ┌──────────┐        ┌───────────┐        ┌─────────────┐       ┌────────┐  │
+│   │ Database │        │ API Client│        │ Doc Process │       │  ...   │  │
+│   └──────────┘        └───────────┘        └─────────────┘       └────────┘  │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+Key interfaces between components:
+- **JobFinder → ResumeTailor**: JobFinder produces JobListing objects that ResumeTailor consumes
+- **ResumeTailor → LetterWriter**: Resume objects are passed to generate targeted cover letters
+- **LetterWriter → ApplicationSubmitter**: Completed application packages are passed for submission
+
+All components interact with shared utility services for database operations, API access, and document processing.
+
+For detailed architecture information, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Getting Started
 
 ### Prerequisites
@@ -82,6 +111,7 @@ job-application-agent-system/
 ├── LICENSE                      # License information
 ├── main.py                      # Main application entry point
 ├── README.md                    # Project documentation
+├── ARCHITECTURE.md              # Detailed architecture documentation
 └── requirements.txt             # Python dependencies
 ```
 
@@ -135,3 +165,5 @@ This project is licensed under the terms of the LICENSE file included in this re
 - Add feedback analysis for application success rates
 - Create web-based dashboard for monitoring applications
 - Implement AI-powered interview preparation system
+
+For a detailed development roadmap, see our [project Notion page](https://notion.io/your-project-roadmap-link).
